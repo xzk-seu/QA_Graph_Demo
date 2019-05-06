@@ -3,6 +3,8 @@
     <words>
       <w>edgedefault</w>
       <w>graphml</w>
+      <w>multigraph</w>
+      <w>subgraph</w>
       <w>xmlns</w>
     </words>
   </dictionary>

@@ -1,41 +1,30 @@
 import networkx as nx
-import csv
-import os
 import json
-import matplotlib.pyplot as plt
+import os
+from show_graph_info import show_graph_info
 
 
-def run():
-    # graph = nx.read_graphml('test.graphml')
-    #
-    # graph = nx.read_yaml('test.yaml')
-    #
-    # with open('test_adj.json', 'r') as fr:
-    #     data = json.load(fr)
-    # graph = nx.adjacency_graph(data)
+# 有n条边的子图列表从文件导入
+def load_subgraph_data_list(edge_number):
+    file_path = os.path.join(os.getcwd(), 'export', '%d_sub_graph.json' % edge_number)
+    with open(file_path, 'r') as fr:
+        subgraph_data_list = json.load(fr)
+    return subgraph_data_list
 
-    with open('test_link.json', 'r') as fr:
-        data = json.load(fr)
-    graph = nx.node_link_graph(data)
 
-    # with open('test_cytoscape.json', 'r') as fr:
-    #     data = json.load(fr)
-    # graph = nx.cytoscape_graph(data)
-
-    print(graph.edges)
-    print(len(graph.edges))
-
-    print(graph.nodes)
-    print(len(graph.nodes))
-
-    for n in graph.nodes:
-        data = graph.node[n]
-        print(n, data)
-
-    for e in graph.edges:
-        data = graph.get_edge_data(e[0], e[1], e[2])
-        print(e, data)
+def load_graph(file_name):
+    dir_path = os.path.join(os.getcwd(), 'export')
+    file_path = os.path.join(dir_path, '%s.json' % file_name)
+    try:
+        with open(file_path, 'r', encoding='utf-8') as fr:
+            data = json.load(fr)
+        graph = nx.node_link_graph(data)
+    except Exception as e:
+        print(e)
+    else:
+        return graph
 
 
 if __name__ == '__main__':
-    run()
+    g = load_graph('all_graph')
+    show_graph_info(g)

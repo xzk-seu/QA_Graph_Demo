@@ -52,6 +52,8 @@ def graph_generation():
             graph.node[n]['label'] = 'concept'
     # 使graph不能再被修改
     nx.freeze(graph)
+
+    export_graph(graph, 'all_graph')
     return graph
 
 
