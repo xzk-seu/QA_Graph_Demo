@@ -73,17 +73,13 @@ def run():
     # subgraph_list = get_subgraph_with_one_edge(all_graph)
     # export_subgraph_list(subgraph_list, '1_sub_graph')
 
-    subgraph_list = get_subgraph_with_multi_edge(2, all_graph)
-    export_subgraph_list(subgraph_list, '2_sub_graph')
+    # subgraph_list = get_subgraph_with_multi_edge(2, all_graph)
+    # export_subgraph_list(subgraph_list, '2_sub_graph')
+    number_of_edges = int(input('Please the maximum number of edges: '))
 
-    subgraph_list = get_subgraph_with_multi_edge(3, all_graph)
-    export_subgraph_list(subgraph_list, '3_sub_graph')
-
-    subgraph_list = get_subgraph_with_multi_edge(4, all_graph)
-    export_subgraph_list(subgraph_list, '4_sub_graph')
-
-    subgraph_list = get_subgraph_with_multi_edge(5, all_graph)
-    export_subgraph_list(subgraph_list, '5_sub_graph')
+    for m in range(1, number_of_edges+1):
+        subgraph_list = get_subgraph_with_multi_edge(m, all_graph)
+        export_subgraph_list(subgraph_list, '%d_sub_graph' % m)
 
 
 if __name__ == '__main__':
